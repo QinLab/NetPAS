@@ -47,4 +47,4 @@ This code is used to plot the subnetworks related to GO (can use pathways etc) t
 
 Sample network graphs (functional neighbor subnetworks of the top-5 BP, CC and MF GO terms of the gene set "genes.csv") are saved in the folder network/. Also see Fig.4 of the MS.
 
-The libraries used in the R-codes include "plyr" for counting frequencies, "GO.db" to identify GO terms, "matrixStats" and "microbenchmark" for statistics of matrices, "gplot" for plotting and "igraph" for network analysis.
+The libraries used in the R-codes include "GO.db" to identify GO terms, "gplots" for heatmaps and "igraph" for network analysis.
