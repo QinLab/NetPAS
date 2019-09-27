@@ -21,30 +21,27 @@ A list of the 50 hallmark gene sets is saved in /data/hallmark.list
 The R-codes include
 
 1. 01.ms02star.R 
-Apply this code to generate null permutations, such as
+Apply this code to generate MS02star null permutations, such as
 
 $ R -f 01.ms02star.R --args data/human.pin.csv output/ms02.1.csv 100 9
 
-The augments include the original network followed by the output null permutation. For the last two terms, the former is used for number of cycles to rebuild from self-interacting and redundant edges to generate the correct model. The last term is for debug use and it is set to 9 to proceed. Usually the permutation may succeed within 100 recursive cycles. The success rate of this code depends on the original network: for yeast and human PINs, the success rate is around 80-90%. We recommend to perform more runs to make enough success permutations.
+The augments include the original network followed by the output null permutation. For the last two terms, the former is iterative number for removing self-interacting and redundant edges. The last term is for debugging, and it is set to 9 here to proceed. Usually the permutation succeeds within 100 recursive cycles. The success rate of this code depends on the original network: for yeast and human PINs, the success rate is around 80-90%. We recommend to perform more runs to generate enough number of null permutations.
 
 2. 02.hallmark.Rmd
-Note: All resources need be downloaded from the URLs shown above. We not have the copy right to publish them in this repo.
-Results of this markdown code is recorded in "hallmark.pdf".
+Note: All resources need be downloaded from the URLs shown above. Also see "hallmark.pdf" for markdown results.
 
-The first chunk of this markdown code shows calculations of the interactions between a pair of gene sets, which results a 50x50 matrix for all hallmark sets, saved as "hhi.csv". This part of colde can be used for interaction analysis in ms02star null models.
+The first chunk shows calculations of the interactions among 50 hallmark gene sets from MSigDB, which results a 50x50 matrix which is saved as "hhi.csv". This chunk can be extendefd for interaction analysis in ms02star null models.
 
-The second chunk of this markdown code uses the Z-score matrix (also 50x50, which is based on the original interaction and matrices from 10k ms02star null models, see in "hhi.z.csv") to plot a Z-score heatmap. In our manuscript there are no dendrograms and all hallmark sets are named by serial numbers, also for comparison with the Jaccard heatmap (see below).
+The second chunk uses the Z-score matrix (also 50x50, which is based on the original PIN versus 10k ms02star null models, and is saved in "hhi.z.csv") to plot a Z-score heatmap. No dendrograms were added in the manuscript and all hallmark sets are named by serial numbers from 1 to 50, which can be used for comparison with the Jaccard heatmap (see below).
 
-The third chunk of this markdown code constructs a Z-score network of all hallmark sets. Top 5% enriched (positive, shown in red) and suppressed (negative, shown in blue) are plotted.
+The third chunk constructs a Z-score network of all hallmark sets. Top 5% enriched (positive, shown in red) and top 5% suppressed (negative, shown in blue) are plotted.
 
-The fourth chunk of this markdown code calculate the Jacard matrix (J = |A & B|/|A or B|), see the MS, and plot the Jaccard-heatmap. A Jaccard-network is also constructed using the top 5% Jaccard indices. Note that the hallmark sets are not presented in this repo and need be obtained from the URL above.
+The fourth chunk calculates the Jacard matrix (J = |A & B|/|A or B|), see the MS, and plot the Jaccard-heatmap. A Jaccard-network is also constructed using the top 5% Jaccard indices. Note that the hallmark sets are not presented in this repo and can be downloaded from the URL above.
 
-The fifth chunk of this markdonw code shows how to plot the interaction subnetwork between different sets using the PIN. 
+The fifth chunk plots the interaction subnetwork between two gene sets based on the PIN; it can be extended to plot subnetworks based on MS02star null models. 
 
 3. 03.network.figs.R
 
-This code is used to plot the subnetworks related to GO (can use pathways etc) terms. As an example, the top-5 enriched BP, CC and MF GO terms have been selected, and the subnetworks related to these terms are plotted (see Fig.4 of the MS).
-
-Sample network graphs (functional neighbor subnetworks of the top-5 BP, CC and MF GO terms of the gene set "genes.csv") are saved in the folder network/. Also see Fig.4 of the MS.
+This code plots the subnetworks related to GO (BP, CC and MF, and pathways can also be used) terms. As an example, the subnetworks related to top-5 enriched BP, CC and MF GO terms for the hallmark gene set, HALLMARK_OXIDATIVE_PHOSPHORYLATION, were plotted. Also see Fig.4 of the manuscript.
 
 The libraries used in the R-codes include "GO.db" to identify GO terms, "gplots" for heatmaps and "igraph" for network analysis.
