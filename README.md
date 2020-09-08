@@ -45,3 +45,6 @@ The fifth chunk plots the interaction subnetwork between two gene sets based on 
 This code plots the subnetworks related to GO (BP, CC and MF, and pathways can also be used) terms. As an example, the subnetworks related to top-5 enriched BP, CC and MF GO terms for the hallmark gene set, HALLMARK_OXIDATIVE_PHOSPHORYLATION, were plotted. Also see Fig.4 of the manuscript.
 
 The libraries used in the R-codes include "GO.db" to identify GO terms, "gplots" for heatmaps and "igraph" for network analysis.
+
+Citation: <br> 
+Guo, H., Qin, H. Association study based on topological constraints of protein–protein interaction networks. Sci Rep 10, 10797 (2020). https://doi.org/10.1038/s41598-020-67875-w
